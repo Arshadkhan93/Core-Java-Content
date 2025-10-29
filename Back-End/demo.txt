@@ -1,0 +1,14 @@
+/*make a sum of numbers by using oprator concepts
+input a 65 
+output as 11
+que 2 swap to number by using third variable 
+input as int a = 10 ,b=20
+output as a= 20 ,b=10*/
+que 3 swap to number withot using third variable 
+input as int a = 10 ,b=20
+Que 4:Round of number to its next multiplication of 10 
+input as 36 
+output as 40
+input as 77
+output as 80
+Que 5: Sum of two number input as int a =10 ,b=20 output as 30 without using + operator
