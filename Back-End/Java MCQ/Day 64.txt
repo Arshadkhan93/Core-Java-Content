@@ -1,0 +1,349 @@
+Q11)
+
+class Foo 
+{ 
+ public int a = 3; 
+ public void addFive() 
+ {
+	 a += 5; 
+     System.out.print("f ");
+ } 
+ } 
+ class Bar extends Foo 
+{ 
+ public int a = 8; 
+ public void addFive() 
+ { 
+   this.a += 5; 
+   System.out.print("b " ); 
+ } 
+ }  
+class Test5 
+{
+	public static void main(String[] args) 
+	{
+		 Foo f = new Bar(); 
+		 f.addFive(); 
+		 System.out.println(f.a);
+	}
+}
+Ans :- B, 3
+-----------------------------------------------------------------------
+Q12)
+
+public abstract class AbstractTest 
+{
+    public int getNum() 
+    {
+        return 45;
+    }
+    public abstract class Bar //Inner class
+    {
+        public int getNum() 
+        {
+            return 38;
+        }
+    }
+    public static void main (String [] args) 
+    {
+        AbstractTest t = new AbstractTest() 
+        {
+            public int getNum() 
+            {
+                return 22;
+            }
+        };
+        AbstractTest.Bar f = t.new Bar() 
+        {
+            public int getNum() 
+            {
+                return 57;
+            }
+        };
+        
+        System.out.println(f.getNum() + " " + t.getNum());
+    }
+}
+--------------------------------------------------------------------
+Q13)
+
+abstract class A 
+{
+ public void printValue()
+ {
+ System.out.println("A");
+ }
+}
+
+public class b209
+{ 
+ public static void main (String[] args)
+ {
+   A a1 = new A() 
+	   { 
+       };
+ a1.printValue(); 
+ }
+ }
+Ans :- A
+-----------------------------------------------------------------------
+Q14)
+
+ Which among the following code have errors
+
+a) abstract class A {	
+     void m1();
+   }
+Ans : No Error
+
+b) public class A {	
+     abstract void m1();
+   }
+Ans : Error
+
+c) abstract public class A {	
+    abstract void m1();
+   }
+Ans : No Error
+
+d) abstract public class A 
+   {	
+     void m1() { }
+   }
+Ans : No Error
+
+e) public abstract class A {
+    abstract void m1();	
+    A(){ }	
+    void m2() { }
+    }
+Ans : No Error
+
+f) public abstract class A 
+    {
+     abstract int x = 100;	
+     abstract void m1();
+     abstract void m2();
+    }
+Ans : Error
+
+g) public abstract class A 
+   {	
+    abstract void m1();
+   }
+  
+   public class Test 
+   {
+   public static void main(String[] args) 
+   {
+    A a = new A();
+    }
+   }
+Ans : Error
+
+h) public abstract class A 
+   {	
+    abstract void m1();
+    A(){ }
+    static void m2() 
+    {
+    System.out.println("Hello Java!"); 
+    }
+    }
+    
+    public class B extends A 
+    {
+     void m1()
+    {
+        A.m2(); 
+    }
+    }
+Ans : No Error
+
+i) public abstract class A 
+   {	
+    abstract void m1();
+    private A(){ }
+   }
+   public class B extends A 
+   {
+
+    }
+Ans :Error
+---------------------------------------------------------------------
+Q15)
+
+public abstract class Alpha 
+{
+  abstract void m1(Alpha a);
+}
+
+public class Beta extends Alpha 
+{
+  void m1(Alpha a) 
+  {
+  System.out.println("One"); 	//2
+  }
+}
+
+public class Gamma extends Beta 
+{
+void m1(Beta b) 
+{	
+ System.out.println("Two");//1
+ super.m1(new Beta());
+ }
+}
+
+public class Test 
+{
+public static void main(String[] args) 
+{
+Gamma c = new Gamma();
+ c.m1(new Beta());
+  }
+}
+Ans :- Two ,One
+----------------------------------------------------------------------
+Q16)
+
+class Grandparent 
+{
+    String name = "granparent";
+    void act() 
+    {
+        System.out.println(name);
+    }
+}
+
+class Parent extends Grandparent 
+{
+    String name = "parent";
+}
+
+class Child extends Parent 
+{
+    String name = "child";
+    void act() 
+    {
+        System.out.println(name);
+    }
+}
+
+public class Exam 
+{
+   public static void main(String[] args) 
+   {
+        Parent yo = new Child();
+        yo.act();
+    }
+}
+
+Ans := Child
+----------------------------------------------------------------------
+Q17)
+
+
+class Animal 
+{
+ String name = "Rocky ";
+ String makeNoise()
+ {
+ return "generic noise";
+ }
+ }
+
+ class Tiger extends Animal 
+{
+String name = "stripes ";
+ String makeNoise() {
+ return "roarrrrrrrrrrr";
+ }
+ }
+ public class Zoo {
+ public static void main(String[] args) 
+{ 
+new Zoo().go(); 
+}
+ void go() {
+ Animal m = new Tiger();
+ System.out.println(m.name + m.makeNoise());
+ }
+}
+Ans := Rocky , roarrrrrrrrrrrrrrr
+---------------------------------------------------------------------
+Q18) 
+class Animal { }
+class Horse extends Animal { }
+class q31
+{
+      public void doStuff(Animal a) 
+      {
+           System.out.println("In the Animal version");
+      }
+      public void doStuff(Horse h) 
+      {
+           System.out.println("In the Horse version");
+      }
+      public static void main (String [] args) 
+      {
+            q31 q = new q31();
+            Animal ob1 = new Animal();
+            Animal ob2 = new Horse();
+            q.doStuff(ob1);
+            q.doStuff(ob2);
+     }
+}
+Ans :- In the Animal version
+	In the Animal version
+----------------------------------------------------------------------
+Q19)
+
+class Animal 
+{
+      static void doStuff() 
+      {
+             System.out.print("a  ");
+      }
+}
+class q31 extends Animal 
+{
+      static void doStuff() 
+      {        
+            System.out.print("d  ");
+      }
+      public static void main(String [] args) 
+      {
+            Animal [] a = {new Animal(), new q31(), new Animal()};
+            for(int x = 0; x < a.length; x++)
+                 a[x].doStuff();               
+      }
+}
+Ans :- a a a 
+----------------------------------------------------------------------
+Q20)
+
+class Dog
+{
+}
+class Cat extends Dog
+{
+}
+class Exam
+{
+	public static void main(String... args)
+	{
+		Dog d = new Dog();
+		Cat c = new Cat();
+		if(d.equals(c))
+		{
+			System.out.println("true");
+		}
+			else
+		{
+				System.out.println("false");
+		}
+	}
+}
+Ans :- false
+======================================================================
