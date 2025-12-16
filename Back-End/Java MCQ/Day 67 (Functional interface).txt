@@ -1,0 +1,139 @@
+11.By using FunctionalInterface annotation following code is correct or not?
+@FunctionalInterface
+interface NIT
+{
+	String myInterface(String a);
+	default void nit() 
+	{
+		
+	}
+	default int newInterface(int a) 
+	{
+		return a;
+	}
+}
+Ans : Correct
+
+12.Is there any error in following code?
+@FunctionalInterface
+interface NIT
+{
+	String myInterface(String a); //abstract method 
+	int hashCode(); //Object class methods
+	String toString();	
+}
+Ans : Correct
+
+13.Is there any error in following code?
+@FunctionalInterface
+interface NIT
+{
+	String myInterface(String a); //abstract method
+	String toString(); //Object class method
+	void wait();
+	void notify();
+	
+}
+Ans : Not a Functional Interface
+
+14.What is the output of the following code
+public class FunctionalInterfaceExample{
+	public static void main(String[] args) {
+		Predicate<Integer> grater = a -> a >15;
+		
+		Predicate<Integer> less = a -> a <10;
+		
+		boolean bool = grater.test(20);//true
+		boolean bool1 = less.test(5);//true
+		System.out.println(bool);
+		System.out.println(bool1);		
+		
+	}
+}
+
+Ans : True, True
+
+15.What is the output of the following code
+public class FunctionalInterfaceExample{
+	public static void main(String[] args) 
+	{
+		String str[]= {"Java","Python","Naresh","IT"};
+		
+		Predicate<String> prediacte = p -> p.endsWith("va");
+		for(String s: str) 
+		{
+			if(prediacte.test(s))
+				System.out.println(s);
+		}
+	}
+}
+Ans : java
+
+16.What is the output of the following code
+interface NIT
+{
+	public int myInterface(int a);
+}
+
+public class Java8 {
+	public static void main(String[] args) {
+		NIT nit = (a) -> a+1;
+		int i = nit.myInterface(6);
+		System.out.println(i);
+	}
+}
+
+Ans : 7
+
+17.What is the output of the following code?
+@FunctionalInterface
+interface NIT
+{	
+	int myInterface(int a);
+}
+
+@FunctionalInterface
+interface NewInterface
+{
+	void alpha(String a);
+}
+
+public class Java8 {
+	public static void main(String[] args) {
+		NIT nit = (a) -> a*a*a;
+		System.out.println(nit.myInterface(5)); //125
+		NewInterface result = (a) -> System.out.println("Welcome to NareshIT");
+		result.alpha("");//2
+	}
+}
+Ans :- 125
+	Welcome to NareshIT
+
+
+18.What is the output of the following code?
+public class Java8 {
+	public static void main(String[] args) {
+		Consumer<Integer> value = (a) -> System.out.println(a*3);
+		value.accept(5);
+	}
+}
+Ans : 15
+
+19. What is the output of the following code?
+public class Java8 {
+	public static void main(String[] args) {
+		Consumer<String> value = (a) -> System.out.println("Naresh I Technologies");
+		value.accept("");
+	}
+}
+Ans : Naresh I Technologies
+
+20. What is the output of the following code?
+public class Java8 {
+	public static void main(String[] args) {
+		Consumer<String> value = (a) -> System.out.println(a.toLowerCase());
+		value.accept("NareshIT");
+	}
+}
+
+Ans : nareshit
